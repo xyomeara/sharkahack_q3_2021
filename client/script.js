@@ -42,7 +42,6 @@ const showMessage = (textContent, timeout) => {
     }
 };
 
-
 // function resizeListener
 const resizeListener = () => {
     termFit.fit();
@@ -50,17 +49,9 @@ const resizeListener = () => {
     showMessage(`${term.cols}x${term.rows}`, 2000);
 };
 
-
 window.visualViewport.addEventListener('resize', () => {
     elem.style.height = `${visualViewport.height}px`;
     resizeListener();
-
-    setTimeout(() => {
-        showMessage(
-            `visualViewport.width: ${visualViewport.width} x visualViewport.height: ${visualViewport.height}`,
-            2000
-        );
-    }, 2000);
 });
 
 // Fake terminal interface
@@ -72,7 +63,7 @@ function runFakeTerminal() {
     term._initialized = true;
 
     term.prompt = () => {
-        term.write('\r\n$ ');
+        term.write('\r\ndigitaloceaen ~ % ');
     };
 
     term.writeln('Welcome to xterm.js');
@@ -103,7 +94,7 @@ function runFakeTerminal() {
 }
 
 function prompt(term) {
-    term.write('\r\n$ ');
+    term.write('\r\ndigitaloceaen ~ % ');
 }
 
 runFakeTerminal();
