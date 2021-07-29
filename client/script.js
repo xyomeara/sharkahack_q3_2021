@@ -56,17 +56,17 @@ const virtualKeyboardHeight = () => {
 };
 
 elem.addEventListener('focusin', (e) => {
-    const viewport = e.target;
+    const visualViewport = window.visualViewport;
     showMessage(
-        `Virtual keyboard detected!!! focusin!!! viewport.width: ${viewport.width} x viewport.height: ${viewport.height}`,
+        `Virtual keyboard detected!!! focusin!!! visualViewport.width: ${visualViewport.width} x visualViewport.height: ${visualViewport.height}`,
         5000
     );
 });
 
 elem.addEventListener('focusout', () => {
-    const viewport = e.target;
+    const visualViewport = window.visualViewport;
     showMessage(
-        `Virtual keyboard detected!!! focusout!!! viewport.width: ${viewport.width} x viewport.height: ${viewport.height}`,
+        `Virtual keyboard detected!!! focusout!!! visualViewport.width: ${visualViewport.width} x visualViewport.height: ${visualViewport.height}`,
         5000
     );
 });
@@ -84,7 +84,18 @@ window.addEventListener('resize', () => {
 
     setTimeout(() => {
         showMessage(
-            `window.visualViewport.width: ${window.visualViewport.width} x window.visualViewport.height: ${window.visualViewport.height}`,
+            `visualViewport.width: ${visualViewport.width} x visualViewport.height: ${visualViewport.height}`,
+            2000
+        );
+    }, 2000);
+});
+
+window.visualViewport.addEventListener('resize', () => {
+    resizeListener();
+
+    setTimeout(() => {
+        showMessage(
+            `visualViewport.width: ${visualViewport.width} x visualViewport.height: ${visualViewport.height}`,
             2000
         );
     }, 2000);
