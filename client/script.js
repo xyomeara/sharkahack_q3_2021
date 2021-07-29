@@ -55,19 +55,26 @@ const virtualKeyboardHeight = () => {
     return keyboardHeight;
 };
 
-elem.onfocus = () => {
+elem.addEventListener('focus', () => {
     showMessage(
-        `Virtual keyboard detected!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        `Virtual keyboard detected!!! focus!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
         5000
     );
-};
+});
 
-elem.onblur = () => {
+elem.addEventListener('blur', () => {
     showMessage(
-        `Virtual keyboard detected!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        `Virtual keyboard detected!!! blur!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
         5000
     );
-};
+});
+
+elem.addEventListener('focusout', () => {
+    showMessage(
+        `Virtual keyboard detected!!! focusout!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        5000
+    );
+});
 
 // function resizeListener
 const resizeListener = () => {
