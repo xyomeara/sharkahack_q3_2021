@@ -55,16 +55,18 @@ const virtualKeyboardHeight = () => {
     return keyboardHeight;
 };
 
-elem.addEventListener('focusin', () => {
+elem.addEventListener('focusin', (e) => {
+    const viewport = e.target;
     showMessage(
-        `Virtual keyboard detected!!! focusin!!! window.visualViewport.width: ${window.visualViewport.width} x window.visualViewport.height: ${window.visualViewport.height}`,
+        `Virtual keyboard detected!!! focusin!!! viewport.width: ${viewport.width} x viewport.height: ${viewport.height}`,
         5000
     );
 });
 
 elem.addEventListener('focusout', () => {
+    const viewport = e.target;
     showMessage(
-        `Virtual keyboard detected!!! focusout!!! window.visualViewport.width: ${window.visualViewport.width} x window.visualViewport.height: ${window.visualViewport.height}`,
+        `Virtual keyboard detected!!! focusout!!! viewport.width: ${viewport.width} x viewport.height: ${viewport.height}`,
         5000
     );
 });
