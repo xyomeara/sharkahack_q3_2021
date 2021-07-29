@@ -56,20 +56,21 @@ const virtualKeyboardHeight = () => {
 };
 
 elem.onfocus = () => {
-    focused = true;
     setTimeout(() => {
-        showMessage(`keyboardHeight = ${virtualKeyboardHeight()}`, 2000);
-    }, 2000); // to allow for orientation scrolling
-};
-
-window.onresize = () => {
-    if (focused) {
-        showMessage(`keyboardHeight = ${virtualKeyboardHeight()}`, 2000);
-    }
+        showMessage(
+            `window.innerWidth: ${window.innerWidth}x window.innerHeight: ${window.innerHeight}`,
+            2000
+        );
+    }, 2000);
 };
 
 elem.onblur = () => {
-    focused = false;
+    setTimeout(() => {
+        showMessage(
+            `window.innerWidth: ${window.innerWidth}x window.innerHeight: ${window.innerHeight}`,
+            2000
+        );
+    }, 2000);
 };
 
 // function resizeListener
