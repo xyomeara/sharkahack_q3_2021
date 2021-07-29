@@ -1,8 +1,10 @@
-@import "~xterm/css/xterm.css";
+@import '~xterm/css/xterm.css';
 
-
-html, body, #terminal {
+html,
+body,
+#terminal {
     background: black;
+    color: aliceblue;
     height: 100%;
     width: 100%;
     padding: 0%;
