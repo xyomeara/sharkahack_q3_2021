@@ -1,8 +1,17 @@
 import './style.css';
 import { Terminal } from 'xterm';
-const term = new Terminal();
-term.open(document.getElementById('terminal'));
+import { FitAddon } from 'xterm-addon-fit';
 
+// Initialize term and termfit
+const term = new Terminal();
+const termFit = new FitAddon();
+term.loadAddon(termFit);
+const htmlElem = document.getElementById('terminal');
+term.open(htmlElem);
+termFit.fit();
+
+
+// Fake terminal interface
 function runFakeTerminal() {
     if (term._initialized) {
         return;
@@ -44,4 +53,5 @@ function runFakeTerminal() {
 function prompt(term) {
     term.write('\r\n$ ');
 }
+
 runFakeTerminal();
