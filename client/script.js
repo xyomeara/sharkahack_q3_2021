@@ -52,6 +52,7 @@ const resizeListener = () => {
 
 
 window.visualViewport.addEventListener('resize', () => {
+    elem.style.height = `${visualViewport.height}px`;
     resizeListener();
 
     setTimeout(() => {
