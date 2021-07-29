@@ -14,10 +14,17 @@ termFit.fit();
 const message = elem.ownerDocument.createElement('div');
 message.className = 'xterm-overlay';
 
+// Initialize timeoutID
+let timeoutID = null;
+
 // function removeMessage
 const removeMessage = () => {
     if (message.parentNode === elem) {
         elem.removeChild(message);
+    }
+    if (timeoutID !== null) {
+        clearTimeout(timeoutID);
+        timeoutID = null;
     }
 };
 
@@ -28,13 +35,8 @@ const showMessage = (textContent, timeout) => {
     message.textContent = textContent;
     elem.appendChild(message);
 
-    let msgDisplayTimer;
-    if (msgDisplayTimer !== null) {
-        clearTimeout(msgDisplayTimer);
-        msgDisplayTimer = null;
-    }
     if (timeout > 0) {
-        msgDisplayTimer = setTimeout(() => {
+        timeoutID = setTimeout(() => {
             removeMessage();
         }, timeout);
     }
