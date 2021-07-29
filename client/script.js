@@ -46,7 +46,7 @@ const showMessage = (textContent, timeout) => {
 const resizeListener = () => {
     termFit.fit();
     term.scrollToBottom();
-    showMessage(String(term.cols) + 'x' + String(term.rows), 2000);
+    showMessage(`${term.cols}x${term.rows}`, 2000);
 };
 
 // attach resize event listener to window
