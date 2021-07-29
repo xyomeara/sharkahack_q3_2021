@@ -14,7 +14,7 @@ termFit.fit();
 const message = elem.ownerDocument.createElement('div');
 message.className = 'xterm-overlay';
 
-// Initialize timeoutID
+// Initialize global variable timeoutID
 let timeoutID = null;
 
 // function removeMessage
@@ -40,6 +40,36 @@ const showMessage = (textContent, timeout) => {
             removeMessage();
         }, timeout);
     }
+};
+
+//Get virtualKeyboardHeight
+let focused = false;
+
+const virtualKeyboardHeight = () => {
+    const sx = document.body.scrollLeft;
+    const sy = document.body.scrollTop;
+    const naturalHeight = window.innerHeight;
+    window.scrollTo(sx, document.body.scrollHeight);
+    const keyboardHeight = naturalHeight - window.innerHeight;
+    window.scrollTo(sx, sy);
+    return keyboardHeight;
+};
+
+elem.onfocus = () => {
+    focused = true;
+    setTimeout(() => {
+        showMessage(`keyboardHeight = ${virtualKeyboardHeight()}`, 2000);
+    }, 2000); // to allow for orientation scrolling
+};
+
+window.onresize = () => {
+    if (focused) {
+        showMessage(`keyboardHeight = ${virtualKeyboardHeight()}`, 2000);
+    }
+};
+
+elem.onblur = () => {
+    focused = false;
 };
 
 // function resizeListener
