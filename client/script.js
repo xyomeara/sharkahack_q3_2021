@@ -66,7 +66,7 @@ function runFakeTerminal() {
         term.write('\r\ndigitaloceaen ~ % ');
     };
 
-    term.writeln('Welcome to xterm.js');
+    term.writeln('Welcome to the DigitalOcean fake terminal');
     term.writeln(
         'This is a local terminal emulation, without a real terminal in the back-end.'
     );
