@@ -48,23 +48,23 @@ let focused = false;
 const virtualKeyboardHeight = () => {
     const sx = document.body.scrollLeft;
     const sy = document.body.scrollTop;
-    const naturalHeight = window.innerHeight;
+    const naturalHeight = window.visualViewport.height;
     window.scrollTo(sx, document.body.scrollHeight);
-    const keyboardHeight = naturalHeight - window.innerHeight;
+    const keyboardHeight = naturalHeight - window.visualViewport.height;
     window.scrollTo(sx, sy);
     return keyboardHeight;
 };
 
 elem.addEventListener('focusin', () => {
     showMessage(
-        `Virtual keyboard detected!!! focusin!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        `Virtual keyboard detected!!! focusin!!! window.visualViewport.width: ${window.visualViewport.width} x window.visualViewport.height: ${window.visualViewport.height}`,
         5000
     );
 });
 
 elem.addEventListener('focusout', () => {
     showMessage(
-        `Virtual keyboard detected!!! focusout!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        `Virtual keyboard detected!!! focusout!!! window.visualViewport.width: ${window.visualViewport.width} x window.visualViewport.height: ${window.visualViewport.height}`,
         5000
     );
 });
@@ -82,7 +82,7 @@ window.addEventListener('resize', () => {
 
     setTimeout(() => {
         showMessage(
-            `window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+            `window.visualViewport.width: ${window.visualViewport.width} x window.visualViewport.height: ${window.visualViewport.height}`,
             2000
         );
     }, 2000);
