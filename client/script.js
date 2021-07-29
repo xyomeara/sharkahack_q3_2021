@@ -82,6 +82,7 @@ const resizeListener = () => {
 // attach resize event listener to window
 window.addEventListener('resize', () => {
     resizeListener();
+    showMessage(`keyboardHeight = ${virtualKeyboardHeight()}`, 2000);
 });
 
 // Fake terminal interface
