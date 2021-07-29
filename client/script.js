@@ -55,16 +55,9 @@ const virtualKeyboardHeight = () => {
     return keyboardHeight;
 };
 
-elem.addEventListener('focus', () => {
+elem.addEventListener('focusin', () => {
     showMessage(
-        `Virtual keyboard detected!!! focus!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
-        5000
-    );
-});
-
-elem.addEventListener('blur', () => {
-    showMessage(
-        `Virtual keyboard detected!!! blur!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        `Virtual keyboard detected!!! focusin!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
         5000
     );
 });
