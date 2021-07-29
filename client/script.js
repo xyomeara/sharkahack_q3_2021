@@ -1,3 +1,4 @@
+import './style.css';
 import { Terminal } from 'xterm';
 const term = new Terminal();
 term.open(document.getElementById('terminal'));
