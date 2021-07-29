@@ -4,16 +4,16 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const DIST_DIR = path.join(__dirname, '../dist');
 
 /**
  * handle requests for static files
  */
 
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(DIST_DIR));
 
-// catch-all route handler for any requests to an unknown route
-app.use('*', (req, res) => {
-    return res.sendStatus(404);
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
 /**
