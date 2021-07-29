@@ -56,21 +56,17 @@ const virtualKeyboardHeight = () => {
 };
 
 elem.onfocus = () => {
-    setTimeout(() => {
-        showMessage(
-            `window.innerWidth: ${window.innerWidth}x window.innerHeight: ${window.innerHeight}`,
-            2000
-        );
-    }, 2000);
+    showMessage(
+        `Virtual keyboard detected!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        5000
+    );
 };
 
 elem.onblur = () => {
-    setTimeout(() => {
-        showMessage(
-            `window.innerWidth: ${window.innerWidth}x window.innerHeight: ${window.innerHeight}`,
-            2000
-        );
-    }, 2000);
+    showMessage(
+        `Virtual keyboard detected!!! window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
+        5000
+    );
 };
 
 // function resizeListener
@@ -83,9 +79,10 @@ const resizeListener = () => {
 // attach resize event listener to window
 window.addEventListener('resize', () => {
     resizeListener();
+
     setTimeout(() => {
         showMessage(
-            `window.innerWidth: ${window.innerWidth}x window.innerHeight: ${window.innerHeight}`,
+            `window.innerWidth: ${window.innerWidth} x window.innerHeight: ${window.innerHeight}`,
             2000
         );
     }, 2000);
