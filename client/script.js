@@ -82,7 +82,7 @@ function runFakeTerminal() {
                 break;
             case '\u007F': // Backspace (DEL)
                 // Do not delete the prompt
-                if (term._core.buffer.x > 16) {
+                if (term._core.buffer.x > 17) {
                     term.write('\b \b');
                 }
                 break;
