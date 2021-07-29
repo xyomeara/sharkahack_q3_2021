@@ -6,10 +6,51 @@ import { FitAddon } from 'xterm-addon-fit';
 const term = new Terminal();
 const termFit = new FitAddon();
 term.loadAddon(termFit);
-const htmlElem = document.getElementById('terminal');
-term.open(htmlElem);
+const elem = document.getElementById('terminal');
+term.open(elem);
 termFit.fit();
 
+// Initialize message
+const message = elem.ownerDocument.createElement('div');
+message.className = 'xterm-overlay';
+
+// function removeMessage
+const removeMessage = () => {
+    if (message.parentNode === elem) {
+        elem.removeChild(message);
+    }
+};
+
+// function showMessage
+const showMessage = (textContent, timeout) => {
+    console.log('xterm.showMessage:', message);
+    removeMessage(); // remove any existing message first
+    message.textContent = textContent;
+    elem.appendChild(message);
+
+    let msgDisplayTimer;
+    if (msgDisplayTimer !== null) {
+        clearTimeout(msgDisplayTimer);
+        msgDisplayTimer = null;
+    }
+    if (timeout > 0) {
+        msgDisplayTimer = setTimeout(() => {
+            removeMessage();
+        }, timeout);
+    }
+};
+
+// function resizeListener
+const resizeListener = () => {
+    termFit.fit();
+    term.scrollToBottom();
+    showMessage(String(term.cols) + 'x' + String(term.rows), 2000);
+};
+
+// attach resize event listener to window
+window.addEventListener('resize', () => {
+    resizeListener();
+});
 
 // Fake terminal interface
 function runFakeTerminal() {
